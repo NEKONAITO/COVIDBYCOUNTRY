@@ -1,0 +1,39 @@
+{% load static %}
+<br>
+<div class="container">
+    <div class="row justify-content-md-center">
+
+        <!---->
+        <input type="hidden" id="CASES" name="variable" value="{{ values.1 }}">
+        <input type="hidden" id="RECOVERED" name="variable" value="{{ values.5 }}">
+        <input type="hidden" id="ACTIVE" name="variable" value="{{ values.6 }}">
+        <input type="hidden" id="DEADS" name="variable" value="{{ values.3 }}">
+
+        <canvas id="myChart"></canvas>
+        <script type="text/javascript">
+
+            var cases = document.getElementById("CASES").value;
+            var recovered = document.getElementById("RECOVERED").value;
+            var active = document.getElementById("ACTIVE").value;
+            var deads = document.getElementById("DEADS").value;
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'pie',
+
+            // The data for our dataset
+            data: {
+                labels: ['Cases', 'Recovered', 'Actives', 'Deads'],
+                datasets: [{
+                        label: 'Now',
+                        backgroundColor:["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)"],
+                        data: [cases, recovered, active, deads]
+                }]
+            },
+            // Configuration options go here
+            options: {}
+            });
+        </script>
+    </div>
+</div>
